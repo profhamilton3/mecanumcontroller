@@ -3,32 +3,32 @@ radio.onReceivedNumber(function (receivedNumber) {
     basic.showNumber(receivedNumber)
 })
 joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P14, joystickbit.ButtonType.down, function () {
-    radio.sendNumber(4)
-    basic.showArrow(ArrowNames.South)
-    basic.pause(200)
+    radio.sendNumber(7)
+    basic.showArrow(ArrowNames.SouthWest)
 })
 input.onButtonPressed(Button.A, function () {
-    radio.sendNumber(1)
-    basic.showString("A")
+    radio.sendNumber(12)
+    basic.showString("&")
 })
 joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P15, joystickbit.ButtonType.down, function () {
-    radio.sendNumber(11)
-    basic.showArrow(ArrowNames.East)
-    basic.pause(200)
+    radio.sendNumber(8)
+    basic.showArrow(ArrowNames.SouthEast)
+})
+input.onButtonPressed(Button.AB, function () {
+    radio.sendNumber(0)
+    basic.showString("P")
 })
 input.onButtonPressed(Button.B, function () {
-    radio.sendNumber(0)
-    basic.showString("B")
+    radio.sendNumber(13)
+    basic.showString("@")
 })
 joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P13, joystickbit.ButtonType.down, function () {
-    radio.sendNumber(1)
-    basic.showArrow(ArrowNames.North)
-    basic.pause(200)
+    radio.sendNumber(6)
+    basic.showArrow(ArrowNames.NorthEast)
 })
 joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P12, joystickbit.ButtonType.down, function () {
-    radio.sendNumber(10)
-    basic.showArrow(ArrowNames.West)
-    basic.pause(200)
+    radio.sendNumber(5)
+    basic.showArrow(ArrowNames.NorthWest)
 })
 joystickbit.initJoystickBit()
 radio.setGroup(1)
@@ -39,13 +39,15 @@ let pY0 = joystickbit.getRockerValue(joystickbit.rockerType.Y)
 let pX0 = joystickbit.getRockerValue(joystickbit.rockerType.X)
 let pX = pX0
 let pY = pY0
-basic.showIcon(IconNames.Meh)
+basic.showIcon(IconNames.House)
 basic.forever(function () {
     if (Math.abs(joystickbit.getRockerValue(joystickbit.rockerType.X) - pX) > 50 && Math.abs(joystickbit.getRockerValue(joystickbit.rockerType.X) - pX0) > 50) {
         if (joystickbit.getRockerValue(joystickbit.rockerType.X) < 500) {
             radio.sendNumber(3)
+            basic.showArrow(ArrowNames.East)
         } else if (joystickbit.getRockerValue(joystickbit.rockerType.X) >= 500) {
             radio.sendNumber(2)
+            basic.showArrow(ArrowNames.West)
         } else {
             basic.showIcon(IconNames.No)
         }
@@ -54,12 +56,13 @@ basic.forever(function () {
     if (Math.abs(joystickbit.getRockerValue(joystickbit.rockerType.Y) - pY) > 50 && Math.abs(joystickbit.getRockerValue(joystickbit.rockerType.Y) - pY0) > 50) {
         if (joystickbit.getRockerValue(joystickbit.rockerType.Y) < 500) {
             radio.sendNumber(4)
+            basic.showArrow(ArrowNames.South)
         } else if (joystickbit.getRockerValue(joystickbit.rockerType.Y) >= 500) {
             radio.sendNumber(1)
+            basic.showArrow(ArrowNames.North)
         } else {
             basic.showIcon(IconNames.No)
         }
         pY = joystickbit.getRockerValue(joystickbit.rockerType.Y)
     }
-    basic.pause(200)
 })
