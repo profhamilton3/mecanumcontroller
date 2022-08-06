@@ -31,15 +31,15 @@ joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P12, joystickbit.ButtonType
     basic.showArrow(ArrowNames.NorthWest)
 })
 joystickbit.initJoystickBit()
-radio.setGroup(1)
-radio.setFrequencyBand(16)
+radio.setGroup(2)
+radio.setFrequencyBand(32)
 radio.setTransmitPower(7)
 joystickbit.Vibration_Motor(500)
 let pY0 = joystickbit.getRockerValue(joystickbit.rockerType.Y)
 let pX0 = joystickbit.getRockerValue(joystickbit.rockerType.X)
 let pX = pX0
 let pY = pY0
-basic.showIcon(IconNames.House)
+basic.showIcon(IconNames.Pitchfork)
 basic.forever(function () {
     if (Math.abs(joystickbit.getRockerValue(joystickbit.rockerType.X) - pX) > 50 && Math.abs(joystickbit.getRockerValue(joystickbit.rockerType.X) - pX0) > 50) {
         if (joystickbit.getRockerValue(joystickbit.rockerType.X) < 500) {
