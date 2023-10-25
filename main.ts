@@ -17,6 +17,7 @@ joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P15, joystickbit.ButtonType
 input.onButtonPressed(Button.AB, function () {
     radio.sendNumber(0)
     basic.showString("P")
+    music.stopMelody(MelodyStopOptions.All)
 })
 input.onButtonPressed(Button.B, function () {
     radio.sendNumber(13)
@@ -64,6 +65,7 @@ basic.forever(function () {
         } else if (joystickbit.getRockerValue(joystickbit.rockerType.Y) >= 500) {
             radio.sendNumber(1)
             basic.showArrow(ArrowNames.North)
+            music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Prelude), music.PlaybackMode.InBackground)
         } else {
             basic.showIcon(IconNames.No)
         }
