@@ -25,6 +25,7 @@ joystickbit.on_button_event(joystickbit.JoystickBitPin.P15,
 def on_button_pressed_ab():
     radio.send_number(0)
     basic.show_string("P")
+    music.stop_melody(MelodyStopOptions.ALL)
 input.on_button_pressed(Button.AB, on_button_pressed_ab)
 
 def on_button_pressed_b():
@@ -82,6 +83,8 @@ def on_forever():
         elif joystickbit.get_rocker_value(joystickbit.rockerType.Y) >= 500:
             radio.send_number(1)
             basic.show_arrow(ArrowNames.NORTH)
+            music._play_default_background(music.built_in_playable_melody(Melodies.PRELUDE),
+                music.PlaybackMode.IN_BACKGROUND)
         else:
             basic.show_icon(IconNames.NO)
         pY = joystickbit.get_rocker_value(joystickbit.rockerType.Y)

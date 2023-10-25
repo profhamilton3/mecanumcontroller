@@ -65,7 +65,6 @@ basic.forever(function () {
         } else if (joystickbit.getRockerValue(joystickbit.rockerType.Y) >= 500) {
             radio.sendNumber(1)
             basic.showArrow(ArrowNames.North)
-            music._playDefaultBackground(music.builtInPlayableMelody(Melodies.Prelude), music.PlaybackMode.InBackground)
         } else {
             basic.showIcon(IconNames.No)
         }
