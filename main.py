@@ -54,7 +54,7 @@ def on_logo_pressed():
 input.on_logo_event(TouchButtonEvent.PRESSED, on_logo_pressed)
 
 joystickbit.init_joystick_bit()
-radio.set_group(3)
+radio.set_group(5)
 radio.set_frequency_band(33)
 radio.set_transmit_power(7)
 joystickbit.Vibration_Motor(500)

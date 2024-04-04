@@ -33,18 +33,19 @@ joystickbit.onButtonEvent(joystickbit.JoystickBitPin.P12, joystickbit.ButtonType
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     radio.sendNumber(9)
+    basic.showNumber(5)
     music.playSoundEffect(music.builtinSoundEffect(soundExpression.hello), SoundExpressionPlayMode.UntilDone)
 })
 joystickbit.initJoystickBit()
-radio.setGroup(3)
-radio.setFrequencyBand(33)
+radio.setGroup(5)
+basic.showNumber(5)
+radio.setFrequencyBand(35)
 radio.setTransmitPower(7)
 joystickbit.Vibration_Motor(500)
 let pY0 = joystickbit.getRockerValue(joystickbit.rockerType.Y)
 let pX0 = joystickbit.getRockerValue(joystickbit.rockerType.X)
 let pX = pX0
 let pY = pY0
-basic.showIcon(IconNames.House)
 basic.forever(function () {
     if (Math.abs(joystickbit.getRockerValue(joystickbit.rockerType.X) - pX) > 50 && Math.abs(joystickbit.getRockerValue(joystickbit.rockerType.X) - pX0) > 50) {
         if (joystickbit.getRockerValue(joystickbit.rockerType.X) < 500) {
